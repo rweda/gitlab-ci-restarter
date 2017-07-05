@@ -1,3 +1,19 @@
 = GitLab CI Job Restarter
+:gitlab-runner: https://gitlab.com/gitlab-org/gitlab-ci-multi-runner[GitLab Runner]
 
 Fault-tolerant CI.
+
+If your {gitlab-runner} is killed -
+maybe the configuration needed to be changed, or an autoscaler decided to consolidate the number of runners -
+then all running jobs are killed with a less-than-useful message:
+
+image::docs/screenshot/killed.png[log from killed runner]
+
+The job restarter listens for jobs that failed due to the {gitlab-runner} stopping,
+and can retry them.
+
+The restarter can be configured to limit the number of times jobs can be automatically retried,
+preventing a job that crashes the runner from continuously bringing down the infrastructure.
+
+In addition, the restarter can avoid retrying long-running jobs,
+ensuring that using large amounts of resources only occurs when directly triggered by a user.
