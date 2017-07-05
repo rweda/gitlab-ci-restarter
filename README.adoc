@@ -1,6 +1,7 @@
 = GitLab CI Job Restarter
 :gitlab-runner: https://gitlab.com/gitlab-org/gitlab-ci-multi-runner[GitLab Runner]
 
+[.lead]
 Fault-tolerant CI.
 
 If your {gitlab-runner} is killed -
